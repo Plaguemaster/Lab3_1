@@ -1,16 +1,9 @@
-#--------------------------
-# My first attemts to work with Actions
-#
-# Copyright (c) by steppans 2022
+
 name: Formatter_INC
 
-# Controls when the workflow will run
 on:
-  push:
-    branches:
-      - main
+  [push]:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   my_test_linux:
     runs-on: ubuntu-latest
