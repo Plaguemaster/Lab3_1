@@ -1,62 +1,25 @@
-
-name: Formatter_INC
-
-on:
-  [push]:
-
+name: build+check
+on: [push]
 jobs:
-  my_test_linux:
+  build:
     runs-on: ubuntu-latest
-    
+
+
     steps:
-    - name: Git clone my repo
-      uses: actions/checkout@v1
-      
-    - name: Check existance of cmake
-      run : cmake --version
-    
-    - name: Make builds
-      run : |
-        mkdir cmake-build && cd cmake-build
-        cmake ..
-        make
-    - name: Run hello_world_application
-      run : |
-        cd cmake-build/hello_world_application
-        ./hello_world
-    - name: First attempt to run solver_application
-      run : | 
-        cd cmake-build/solver_application
-        ./solver 1 2 1
-    - name: Second attempt to run solver_application
-      run : | 
-        cd cmake-build/solver_application
-        ./solver 21 16 9
-  my_test_windows:
-    runs-on: windows-latest
-    
-    steps:
-    - name: Git clone my repo
-      uses: actions/checkout@v1
-      
-    - name : Check existance of cmake
-      run  : cmake --version
-    
-    - name : Make builds
-      run  : |
-        mkdir cmake-build && cd cmake-build
-        cmake ..
-        cmake --build .
-    - name : Run hello_world_application
-      run  : |
-        cd cmake-build/hello_world_application/Debug
-        ./hello_world.exe
-    - name : First attempt to run solver_application
-      shell: bash
-      run  : | 
-        cd cmake-build/solver_application/Debug
-        ./solver.exe 1 6 9
-    - name : Second attempt to run solver_application
-      run  : | 
-        cd cmake-build/solver_application/Debug
-        ./solver.exe 10 21 9
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Run cmake --version
+        shell: bash
+        run: |
+          VERSION=`cmake --version`
+          echo $VERSION
+      - name: build
+        shell: bash
+        run: |
+          cmake -H. -B_build
+          cmake --build _build
+      - name: check
+        shell: bash
+        run: |
+          hello_world_application/_build/Hello
