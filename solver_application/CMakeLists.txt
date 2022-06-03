@@ -1,16 +1,13 @@
-cmake_minimum_required(VERSION 3.12)
 
-project(solver)
+cmake_minimum_required(VERSION 3.4)
 
-set(CMAKE_CXX_STANDART 17)
+project(Solver)
 
-add_executable(${PROJECT_NAME} equation.cpp)
+set(CMAKE_CXX_STANDARD 11)
 
-target_include_directories(${PROJECT_NAME}
-                               PUBLIC
-                                  ../formatter_ex_lib
-                                  ../solver_lib)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-target_link_libraries(${PROJECT_NAME}
-                                   formatter_ex
-                                   solver_lib)
+add_library(solver STATIC  /home/runner/work/lab04/lab04/solver_lib/solver.cpp   /home/runner/work/lab04/lab04/formatter_ex_lib/formatter_ex.cpp   /home/runner/work/lab04/lab04/formatter_lib/formatter.cpp)
+include_directories( /home/runner/work/lab04/lab04/solver_lib  /home/runner/work/lab04/lab04/formatter_ex_lib  /home/runner/work/lab04/lab04/formatter_lib)
+add_executable(Solver ${CMAKE_CURRENT_SOURCE_DIR}/equation.cpp)
+target_link_libraries(Solver solver)
