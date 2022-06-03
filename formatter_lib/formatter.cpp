@@ -1,9 +1,10 @@
+#include "formatter.h"
 
-cmake_minimum_required(VERSION 3.4)
-project(formatter)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-add_library(print STATIC ${CMAKE_CURRENT_SOURCE_DIR}/formatter.cpp)
-include_directories (  ${CMAKE_CURRENT_SOURCE_DIR})
+std::string formatter(const std::string& message)
+{
+    std::string res;
+    res += "-------------------------\n";
+    res += message + "\n";
+    res += "-------------------------\n";
+    return res;
+}
