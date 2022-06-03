@@ -1,15 +1,10 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.4)
 
 project(formatter_ex)
 
-set(CMAKE_CXX_STANDART 17)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_library(${PROJECT_NAME} STATIC
-                  formatter_ex.cpp)
+add_library(formatter_ex STATIC ${CMAKE_CURRENT_SOURCE_DIR}/formatter_ex.cpp)
 
-target_include_directories(${PROJECT_NAME}
-                          PUBLIC
-                              ../formatter_lib)
-
-target_link_libraries(${PROJECT_NAME}
-                        formatter)
+include_directories(  /home/runner/work/lab04/lab04/formatter_ex_lib   /home/runner/work/lab04/lab04/formatter_lib )
