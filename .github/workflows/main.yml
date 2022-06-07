@@ -19,7 +19,3 @@ jobs:
         run: |
           cmake -H. -B_build
           cmake --build _build
-      - name: check
-        shell: bash
-        run: |
-          hello_world_application/_build/Hello
