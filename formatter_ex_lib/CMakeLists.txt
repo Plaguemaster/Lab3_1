@@ -7,4 +7,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(formatter_ex STATIC ${CMAKE_CURRENT_SOURCE_DIR}/formatter_ex.cpp)
 
-include_directories(  /home/runner/work/lab04/lab04/formatter_ex_lib   /home/runner/work/lab04/lab04/formatter_lib )
+include_directories(  /home/runner/work/lab03_1/lab03_1/formatter_ex_lib   /home/runner/work/lab03_1/lab03_1/formatter_lib )
